@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>तुळजाई डिस्प्ले ऍण्ड मॅनेजमेंट | Tuljai Display and Management, Amravati</title>
+<meta name="description" content="Tuljai Display and Management, Hingangaon, Dhamangaon Rly, Amravati. Food displays, live counters, décor and event management.">
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF8EA;--ink:#2A0D0D;--muted:#6b4a42;--red:#7a1414;--gold:#E8A317;--gold2:#FFD76A;--dark:#14060a;--card:#fff;--line:#ead8b4;
+--hd:'Yatra One','Mukta',Georgia,serif;--bd:'Mukta','Segoe UI',system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150606;--ink:#fff1d6;--muted:#d1b79a;--red:#e8654d;--card:#251010;--line:#4a2a22}}
+:root[data-theme="dark"]{--bg:#150606;--ink:#fff1d6;--muted:#d1b79a;--red:#e8654d;--card:#251010;--line:#4a2a22}
+*{box-sizing:border-box}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--bd);font-size:17px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+html[lang=mr] [data-l=en],html[lang=en] [data-l=mr]{display:none!important}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:20}
+/* splash */
+body.lock{overflow:hidden}
+#splash{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#splash .cl,#splash .cr{position:absolute;top:0;bottom:0;width:50.4%;background:radial-gradient(ellipse at 50% 40%,#3d0c0c,#0a0205 75%);transition:transform 1.2s cubic-bezier(.77,0,.18,1)}
+#splash .cl{left:0;border-right:2px solid var(--gold)}#splash .cr{right:0;border-left:2px solid var(--gold)}
+#splash.open .cl{transform:translateX(-102%)}#splash.open .cr{transform:translateX(102%)}
+#splash .mid{position:relative;z-index:2;text-align:center;transition:opacity .6s,transform 1s}
+#splash.open .mid{opacity:0;transform:scale(1.3)}
+#splash.done{display:none}
+.lw{position:relative;width:min(440px,82vw);margin:0 auto;overflow:hidden;border-radius:10px}
+.lw img{display:block;width:100%;clip-path:inset(0 100% 0 0);animation:wipe 1.1s .15s cubic-bezier(.7,0,.2,1) forwards}
+.lw:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,235,170,.8) 50%,transparent 65%);transform:translateX(-120%);animation:sweep 1.2s .9s ease-in-out forwards}
+.sl{height:2px;width:0;margin:22px auto 0;background:linear-gradient(90deg,transparent,var(--gold2),transparent);animation:ln 1.8s .2s ease-out forwards}
+@keyframes wipe{to{clip-path:inset(0)}}
+@keyframes sweep{to{transform:translateX(120%)}}
+@keyframes ln{to{width:300px}}
+@keyframes fade{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes chIn{from{opacity:0;transform:translateY(70%) rotateX(-80deg);filter:blur(6px)}to{opacity:1;transform:none}}
+@keyframes sh{50%{background-position:0 100%}}
+#cg{position:fixed;left:0;top:0;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(232,163,23,.16),transparent 65%);pointer-events:none;z-index:9;opacity:0;transition:opacity .5s}
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(20,6,10,.92);backdrop-filter:blur(8px);color:#fff1d6;border-bottom:1px solid var(--gold)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:62px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--hd);color:var(--gold2);font-size:1.05rem}
+.logo img{height:46px;width:auto;border-radius:6px}
+nav{display:flex;gap:18px;align-items:center}
+nav a{text-decoration:none;font-weight:600;font-size:.95rem}
+nav a:hover{color:var(--gold2)}
+.tg{display:flex;border:1px solid var(--gold);border-radius:999px;overflow:hidden}
+.tg button{background:transparent;color:#fff1d6;border:0;padding:6px 13px;font:inherit;font-weight:700;cursor:pointer}
+html[lang=mr] .tg [data-b=mr],html[lang=en] .tg [data-b=en]{background:var(--gold);color:#2A0D0D}
+.btn{display:inline-block;padding:14px 28px;border-radius:999px;background:linear-gradient(180deg,var(--gold2),var(--gold));color:#2A0D0D;font:inherit;font-weight:700;text-decoration:none;border:0;cursor:pointer;position:relative;overflow:hidden;transition:transform .25s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.btn:after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);animation:shine 3.5s infinite}
+@keyframes shine{to{left:150%}}
+.btn.alt{background:transparent;color:#fff1d6;border:1.5px solid var(--gold);margin-left:8px}
+.btn.alt:after{display:none}
+.btn.wa{background:#1fa855;color:#fff}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+/* hero */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff1d6;overflow:hidden;background:#14060a}
+.hero .bg{position:absolute;inset:-4%;background:url(images/hero.jpg) center/cover;animation:kb 22s ease-in-out infinite alternate;opacity:.55}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,6,10,.55),rgba(20,6,10,.25) 40%,var(--bg))}
+@keyframes kb{to{transform:scale(1.12) translateY(-2%)}}
+.hero .wrap{position:relative;z-index:2;padding-top:40px;padding-bottom:90px}
+.sp{position:absolute;inset:0;z-index:1;pointer-events:none}
+.sp i{position:absolute;bottom:-10px;width:6px;height:6px;border-radius:50%;background:var(--gold2);box-shadow:0 0 12px 3px rgba(255,190,60,.8);animation:up linear infinite}
+@keyframes up{to{transform:translateY(-105vh) translateX(30px);opacity:0}}
+.hero .lead{max-width:640px;margin:26px auto 30px;font-size:1.15rem;color:#f6e6c8}
+.hero .own{margin-top:30px;color:var(--gold2)}
+/* marquee */
+.mq{background:var(--red);color:var(--gold2);overflow:hidden;white-space:nowrap;padding:12px 0;font-family:var(--hd);font-size:1.15rem}
+.mq div{display:inline-block;animation:mq 28s linear infinite}
+.mq span{margin:0 26px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));text-align:center;padding:40px 20px;gap:14px}
+.stats b{display:block;font-family:var(--hd);font-size:2.6rem;color:var(--red);font-weight:400}
+section{padding:76px 0}
+h2{font-family:var(--hd);font-weight:400;font-size:clamp(1.9rem,5vw,2.8rem);margin:0 0 8px;color:var(--red)}
+.sub{color:var(--muted);max-width:620px;margin:0 0 36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;position:relative;transition:transform .3s,box-shadow .3s;transform-style:preserve-3d}
+.card:before{content:"";position:absolute;left:26px;top:0;width:48px;height:4px;background:var(--gold);border-radius:0 0 4px 4px}
+.card:hover{box-shadow:0 18px 40px rgba(122,20,20,.22)}
+.card h3{margin:6px 0 6px;font-family:var(--hd);font-weight:400;font-size:1.35rem}
+.card p{margin:0;color:var(--muted)}
+.band{background:var(--card);border-block:1px solid var(--line)}
+.show{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));align-items:center}
+.show img{width:100%;border-radius:18px;border:2px solid var(--gold);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px}
+.tile{aspect-ratio:4/3;border-radius:14px;display:flex;align-items:flex-end;padding:14px;font-weight:700;color:#fff;background:linear-gradient(160deg,#9a1c1c,#3d0b0b);border:1px solid rgba(232,163,23,.4);transition:transform .3s}
+.tile:hover{transform:scale(1.05) rotate(-1deg)}
+.tile:nth-child(3n+2){background:linear-gradient(160deg,#c47b00,#6b3f00)}
+.tile:nth-child(3n){background:linear-gradient(160deg,#2F5D3A,#14291b)}
+.vids{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:center}
+.vid{aspect-ratio:9/16;max-width:300px;width:100%;margin:0 auto;border-radius:22px;background:radial-gradient(circle at 50% 40%,#5a1414,#14090a);border:2px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff1d6;text-decoration:none;text-align:center;padding:20px}
+.play{width:74px;height:74px;border-radius:50%;background:var(--gold);display:grid;place-items:center;animation:pulse 2s infinite}
+.play:after{content:"";border-left:22px solid #2A0D0D;border-block:13px solid transparent;margin-left:6px}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,163,23,.7)}100%{box-shadow:0 0 0 24px rgba(232,163,23,0)}}
+.steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));counter-reset:s}
+.step{padding:22px;border-left:3px solid var(--gold);background:var(--bg);border-radius:0 14px 14px 0;counter-increment:s}
+.step:before{content:counter(s);font-family:var(--hd);font-size:2rem;color:var(--gold)}
+.step b{display:block}
+ul.tick{list-style:none;padding:0;margin:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+ul.tick li{padding-left:30px;position:relative}
+ul.tick li:before{content:"✦";position:absolute;left:0;color:var(--gold)}
+details{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px;background:var(--card)}
+summary{cursor:pointer;font-weight:700}
+details p{margin:10px 0 0;color:var(--muted)}
+form{display:grid;gap:14px;max-width:580px}
+label,legend{font-weight:600;font-size:.95rem}
+fieldset{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:0}
+fieldset label{display:inline-block;margin:4px 14px 4px 0;font-weight:400}
+input[type=text],input[type=date],input[type=number],input[type=tel],select,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+.contact{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.info p{margin:0 0 14px}
+footer{background:var(--dark);color:#f3dfbc;text-align:center;padding:36px 20px 90px}
+footer img{height:80px;border-radius:8px;margin-bottom:10px}
+.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:12;display:flex;gap:10px}
+.fab a{text-decoration:none;font-weight:700;padding:13px 20px;border-radius:999px;color:#fff;background:#1fa855;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.fab a+a{background:var(--red)}
+.rv{opacity:0;transform:translateY(34px) scale(.97);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (max-width:640px){nav a:not(.tg *){display:none}.btn.alt{margin:12px 0 0}.logo span{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+.brand{font-family:var(--hd);font-weight:400;margin:0;line-height:1.05;font-size:clamp(3.4rem,14vw,9rem);perspective:800px}
+.brand .w{display:block;font-weight:400}
+.ch{display:inline-block;background:linear-gradient(180deg,var(--gold2),var(--gold) 45%,#b97a00 70%,var(--gold2));background-size:100% 220%;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 5px 0 rgba(122,20,20,.95));transform-origin:50% 100%}
+.go .ch{animation:chIn 1s cubic-bezier(.2,.8,.2,1) backwards,sh 6s 2.6s ease-in-out infinite;animation-delay:calc(var(--i)*80ms + .3s),calc(var(--i)*120ms + 2.6s)}
+.brand small{display:block;font-size:.34em;letter-spacing:.06em;margin-top:14px;color:#fff1d6}
+.go .brand small{animation:fade 1s 1.1s backwards}
+.go .hr{animation:fade 1s backwards;animation-delay:var(--d,1.5s)}
+.btn{transform:translate(var(--mx,0px),var(--my,0px))}
+.btn:hover{transform:translate(var(--mx,0px),var(--my,0px));scale:1.05}
+h2:after{content:"";display:block;width:0;height:3px;margin-top:10px;background:linear-gradient(90deg,var(--gold),transparent);transition:width 1.3s .3s}
+h2.in:after,.in h2:after{width:130px}
+.show img.rv{clip-path:inset(0 0 100% 0);transition:clip-path 1.5s cubic-bezier(.7,0,.2,1),opacity .8s,transform 1.2s}
+.show img.rv.in{clip-path:inset(0)}
+.own2{background:radial-gradient(ellipse at 20% 0,#4a1010,#14060a 70%);color:#fff1d6}
+.own2 .wrap{display:grid;gap:44px;grid-template-columns:minmax(240px,340px) 1fr;align-items:center}
+.own2 h2{color:var(--gold2)}
+.pf{border-radius:24px;padding:8px;background:linear-gradient(135deg,var(--gold2),#b97a00,var(--gold2));box-shadow:0 0 70px rgba(232,163,23,.35);transition:transform .3s}
+.pf img{display:block;width:100%;border-radius:17px}
+.nm{font-family:var(--hd);font-size:clamp(2rem,6vw,3.2rem);margin:0;line-height:1.1;color:#fff1d6}
+.rl{color:var(--gold2);margin:4px 0 14px}
+.own2 .btn{margin:6px 8px 6px 0}
+@media (max-width:760px){.own2 .wrap{grid-template-columns:1fr;text-align:center}.pf{max-width:300px;margin:0 auto}}
+@media (prefers-reduced-motion:reduce){.show img.rv{clip-path:none}.lw img{clip-path:none}}
+
+::selection{background:var(--gold);color:#2A0D0D}
+html{scrollbar-color:var(--gold) #14060a}
+body{background-image:radial-gradient(rgba(232,163,23,.08) 1px,transparent 1px);background-size:26px 26px}
+header{box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.mand{position:absolute;left:50%;top:50%;width:min(140vw,1150px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:repeating-conic-gradient(rgba(232,163,23,.22) 0 1.5deg,transparent 1.5deg 9deg);-webkit-mask:radial-gradient(circle,transparent 36%,#000 37%,#000 62%,transparent 63%);mask:radial-gradient(circle,transparent 36%,#000 37%,#000 62%,transparent 63%);animation:spin 120s linear infinite;z-index:1;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stats{background:linear-gradient(90deg,#3d0c0c,#7a1414,#3d0c0c);color:#fff1d6;border-block:2px solid var(--gold)}
+.stats b{color:var(--gold2);text-shadow:0 0 18px rgba(255,200,80,.5)}
+.dk{background:radial-gradient(ellipse at 50% -10%,#4a1010,#14060a 70%);color:#fff1d6;position:relative;overflow:hidden}
+.dk h2{color:var(--gold2)}
+.dk .sub{color:#e0c9a2}
+.dk .card{background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.02));border:1px solid rgba(232,163,23,.4);backdrop-filter:blur(6px)}
+.dk .card h3{color:var(--gold2)}
+.dk .card p{color:#e0c9a2}
+.dk .card:hover{box-shadow:0 18px 44px rgba(232,163,23,.25)}
+.vrow{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 26px}
+.vc{flex:0 0 min(280px,74vw);scroll-snap-align:center;padding:7px;border-radius:26px;background:linear-gradient(135deg,var(--gold2),#b97a00,var(--gold2));box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.vc:first-child{margin-left:auto}.vc:last-child{margin-right:auto}
+.vc video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:19px;background:#000}
+.vc p{margin:8px 0 2px;text-align:center;font-weight:700;color:#2A0D0D}
+.tile{box-shadow:inset 0 0 0 1px rgba(255,215,106,.25),0 10px 24px rgba(0,0,0,.2)}
+footer{border-top:3px solid;border-image:linear-gradient(90deg,transparent,var(--gold),transparent) 1}
+.own2 .wrap{grid-template-columns:minmax(150px,210px) 1fr;gap:40px}
+.pf{max-width:210px;padding:5px;border-radius:20px}
+.pf img{border-radius:15px}
+@media (max-width:760px){.own2 .wrap{grid-template-columns:1fr}.pf{max-width:170px;margin:0 auto}}
+
+:root:root:root{--bg:#0b0506;--ink:#f6e9cf;--muted:#c8b08a;--red:#f0c35a;--card:#170a0b;--line:#3a2416}
+.rays{position:absolute;left:50%;top:44%;width:min(130vw,900px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:repeating-conic-gradient(rgba(255,200,80,.3) 0 2deg,transparent 2deg 12deg);-webkit-mask:radial-gradient(circle closest-side,#000,transparent 72%);mask:radial-gradient(circle closest-side,#000,transparent 72%);animation:spin 24s linear infinite;z-index:-1}
+.glw{position:absolute;left:50%;top:44%;width:440px;height:440px;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle,rgba(255,190,60,.4),transparent 65%);z-index:-1;animation:pl2 2.4s ease-in-out infinite}
+@keyframes pl2{50%{scale:1.25;opacity:.65}}
+.tgl{color:var(--gold2);margin:20px 0 0;font-family:var(--hd);letter-spacing:.05em;animation:fade 1s 1.3s backwards;padding:0 16px}
+.sk{position:absolute;bottom:-8px;z-index:1;width:5px;height:5px;border-radius:50%;background:var(--gold2);box-shadow:0 0 10px 2px rgba(255,190,60,.8);animation:up linear infinite;pointer-events:none}
+section h2{background:linear-gradient(180deg,#fff3cf,#f0c35a 60%,#c98a12);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dk h2,.own2 h2{color:transparent}
+.wrap>h2,.wrap>.sub{text-align:center}
+.wrap>.sub{margin-inline:auto}
+.wrap>h2:before{content:"❖";display:block;font-size:1rem;color:var(--gold);-webkit-text-fill-color:var(--gold);letter-spacing:.5em;margin-bottom:6px}
+.wrap>h2:after{margin-inline:auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.mq{background:linear-gradient(90deg,#3d0c0c,#7a1414,#3d0c0c);border-block:1px solid var(--gold);color:var(--gold2)}
+.band{background:linear-gradient(180deg,#140809,#1c0d0e)}
+.card{box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.vc{position:relative}
+.vc.pl{box-shadow:0 0 50px rgba(232,163,23,.5)}
+.pb{position:absolute;left:7px;right:7px;top:7px;aspect-ratio:9/16;border:0;border-radius:19px;background:linear-gradient(transparent 45%,rgba(0,0,0,.65));cursor:pointer;display:grid;place-items:center}
+.vc.pl .pb{display:none}
+.own2{background:radial-gradient(ellipse at 15% 10%,#4a1010,#0b0506 65%)}
+.own2 .wrap{grid-template-columns:auto 1fr;gap:44px;max-width:900px}
+.own2 .wrap>div:last-child{background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(232,163,23,.45);border-radius:24px;padding:34px;backdrop-filter:blur(6px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.pf{position:relative;width:180px;height:180px;max-width:none;padding:0;border-radius:50%;background:none;box-shadow:0 0 70px rgba(232,163,23,.4);margin:8px}
+.pf:before{content:"";position:absolute;inset:-9px;border-radius:50%;background:conic-gradient(var(--gold2),#7a4a00,var(--gold2),#7a4a00,var(--gold2));-webkit-mask:radial-gradient(circle closest-side,transparent 92%,#000 93%);mask:radial-gradient(circle closest-side,transparent 92%,#000 93%);animation:spin 7s linear infinite}
+.pf img{width:100%;height:100%;object-fit:cover;object-position:50% 16%;border-radius:50%;border:4px solid #14060a}
+.nm{background:linear-gradient(180deg,#fff7df,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rl{display:inline-block;border:1px solid var(--gold);border-radius:999px;padding:3px 16px;font-size:.92rem}
+@media (max-width:760px){.own2 .wrap{grid-template-columns:1fr;justify-items:center;text-align:center}.own2 .wrap>div:last-child{padding:26px 20px}.pf{width:150px;height:150px;margin:8px auto}}
+
+.hero .bg{transition:opacity 1.6s}.bg2{opacity:0!important}.hero.s1 .bg2{opacity:.55!important}.hero.s1 .bg:not(.bg2){opacity:0}
+.tsl{position:relative;min-height:6.2em;margin-top:18px}
+.tsl>div{position:absolute;left:0;right:0;top:0;opacity:0;transform:translateY(18px);transition:opacity .9s,transform .9s}
+.tsl>div.on{opacity:1;transform:none}
+.tsl p{font-family:var(--hd);font-size:clamp(1.25rem,3.6vw,2rem);color:#f6e6c8;margin:0 auto;max-width:720px;line-height:1.3}
+.dots{display:flex;justify-content:center;gap:10px;margin:6px 0 22px}
+.dots i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--gold);transition:.4s}
+.dots i.on{background:var(--gold);width:30px;border-radius:6px}
+.car{overflow:hidden;padding:6px 0 4px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ct{display:flex;gap:16px;width:max-content;animation:cm 45s linear infinite}
+.car:hover .ct{animation-play-state:paused}
+.ct .tile{flex:0 0 230px}
+@keyframes cm{to{transform:translateX(-50%)}}
+.vban{position:relative;min-height:440px;display:grid;place-items:center;text-align:center;background:#000 center/cover;border-block:2px solid var(--gold)}
+.vov{position:absolute;inset:0;background:linear-gradient(rgba(10,3,4,.55),rgba(10,3,4,.8))}
+.vin{position:relative;padding:60px 20px}
+.rp{position:relative;width:92px;height:92px;border:0;border-radius:50%;background:linear-gradient(180deg,var(--gold2),var(--gold));cursor:pointer;display:inline-grid;place-items:center;margin-top:10px}
+.rp i{width:0;height:0;border-left:26px solid #2A0D0D;border-block:16px solid transparent;margin-left:8px}
+.rp:before,.rp:after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--gold2);animation:rip 2.4s ease-out infinite}
+.rp:after{animation-delay:1.2s}
+@keyframes rip{from{transform:scale(1);opacity:.9}to{transform:scale(2.4);opacity:0}}
+.vc{padding:0;border:0;cursor:pointer;font:inherit;position:relative;overflow:hidden;background:#000;border:2px solid var(--gold);border-radius:22px}
+.vc img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;opacity:.85;transition:transform .8s,opacity .4s}
+.vc:hover img{transform:scale(1.07);opacity:1}
+.vc .rp.s{position:absolute;left:50%;top:44%;width:64px;height:64px;margin:-32px 0 0 -32px}
+.vc .rp.s i{border-left-width:18px;border-block-width:11px;margin-left:6px}
+.vc p{position:absolute;left:0;right:0;bottom:0;margin:0;padding:34px 8px 12px;background:linear-gradient(transparent,rgba(0,0,0,.85));color:var(--gold2)}
+#lb{position:fixed;inset:0;z-index:50;background:rgba(5,2,3,.93);display:none;place-items:center;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+#lb.on{display:grid;animation:fadeIn .4s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+#lb video{max-height:86vh;max-width:min(92vw,520px);border-radius:16px;border:2px solid var(--gold);box-shadow:0 0 80px rgba(232,163,23,.4)}
+#lbx{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--gold);background:rgba(0,0,0,.5);color:var(--gold2);font-size:1.2rem;cursor:pointer}
+.tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:10px 0 28px}
+.tb{background:transparent;color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:9px 22px;font:inherit;font-weight:700;cursor:pointer;transition:.3s}
+.tb.on{background:var(--gold);color:#2A0D0D;border-color:var(--gold)}
+.tp{display:none;max-width:860px;margin:0 auto}.tp.on{display:block;animation:fade .7s both}
+.tp p{text-align:center;font-size:1.1rem}
+#cta{text-align:center;background:linear-gradient(120deg,#3d0c0c,#7a1414 50%,#3d0c0c);border-block:2px solid var(--gold);color:#fff1d6}
+#cta .btn{margin:6px}
+footer{text-align:left}
+footer .fg{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));padding-bottom:20px}
+footer h4{font-family:var(--hd);font-weight:400;color:var(--gold2);margin:0 0 8px;font-size:1.2rem}
+footer a{text-decoration:none}footer a:hover{color:var(--gold2)}
+footer .cp{text-align:center;margin:10px 0 0;border-top:1px solid rgba(232,163,23,.3);padding-top:16px}
+</style>
+</head>
+<body>
+<div id="bar"></div><div id="cg"></div>
+<div id="splash"><i class="cl"></i><i class="cr"></i><div class="mid"><div class="rays"></div><div class="glw"></div><div class="lw"><img src="images/logo.jpg" alt="Tuljai Display and Management logo"></div><div class="sl"></div><p class="tgl"><span data-l="mr">आनंदाचा प्रत्येक क्षण, एक आठवण</span><span data-l="en">Every celebration, a lasting memory</span></p></div></div>
+
+<header><div class="wrap"><a class="logo" href="#top"><img src="images/logo.jpg" alt="Tuljai logo"><span><span data-l="mr">तुळजाई डिस्प्ले ऍण्ड मॅनेजमेंट</span><span data-l="en">TULJAI DISPLAY AND MANAGEMENT</span></span></a>
+<nav><a href="#services"><span data-l="mr">सेवा</span><span data-l="en">Services</span></a><a href="#videos"><span data-l="mr">व्हिडिओ</span><span data-l="en">Videos</span></a><a href="#contact"><span data-l="mr">ऑर्डर</span><span data-l="en">Order</span></a>
+<div class="tg"><button data-b="mr" data-pick="mr">मराठी</button><button data-b="en" data-pick="en">EN</button></div></nav></div></header>
+
+<main id="top">
+<div class="hero"><div class="bg"></div><div class="bg bg2"></div><div class="mand"></div><div class="sp" id="sp"></div><div class="wrap">
+<h1 class="brand"><span data-l="mr"><b class="w">तुळजाई</b><small>डिस्प्ले ऍण्ड मॅनेजमेंट</small></span><span data-l="en"><b class="w">TULJAI</b><small>DISPLAY AND MANAGEMENT</small></span></h1>
+<div class="tsl hr" style="--d:1.5s"><div class="on"><p><span data-l="mr">आजचा प्रसंग, आयुष्यभराची आठवण</span><span data-l="en">An occasion for today, memories for a lifetime</span></p></div><div><p><span data-l="mr">प्रत्येक डिस्प्लेमध्ये राजेशाही थाट</span><span data-l="en">Royal elegance in every display</span></p></div><div><p><span data-l="mr">कुटुंबासोबत आनंदाचा प्रत्येक क्षण</span><span data-l="en">Every celebration, enjoyed with family</span></p></div></div><div class="dots hr" style="--d:1.6s"><i class="on"></i><i></i><i></i></div>
+<a class="btn wa hr" style="--d:1.7s" href="#contact"><span data-l="mr">WhatsApp वर ऑर्डर पाठवा</span><span data-l="en">Send order on WhatsApp</span></a><a class="btn alt hr" style="--d:1.9s" href="#services"><span data-l="mr">आमच्या सेवा</span><span data-l="en">Our services</span></a>
+</div></div>
+
+<div class="mq"><div><span data-l="mr">फूड डिस्प्ले ✦ लाईव्ह काउंटर ✦ सजावट ✦ इव्हेंट मॅनेजमेंट ✦ लग्न ✦ समारंभ ✦ </span><span data-l="en">FOOD DISPLAY ✦ LIVE COUNTERS ✦ DÉCOR ✦ EVENT MANAGEMENT ✦ WEDDINGS ✦ FUNCTIONS ✦ </span></div></div>
+
+<div class="stats"><div class="wrap">
+<div class="rv"><b data-n="500">0</b><span data-l="mr">कार्यक्रम पूर्ण</span><span data-l="en">Events handled</span></div>
+<div class="rv"><b data-n="100">0</b><span data-l="mr">खास पदार्थ</span><span data-l="en">Special dishes</span></div>
+<div class="rv"><b data-n="25">0</b><span data-l="mr">अनुभवी स्टाफ</span><span data-l="en">Expert staff</span></div>
+<div class="rv"><b data-n="100">0</b><span data-l="mr">% वैयक्तिक लक्ष</span><span data-l="en">% personal care</span></div>
+</div></div>
+
+<section id="services" class="dk"><div class="wrap">
+<h2 class="rv"><span data-l="mr">आम्ही काय करतो</span><span data-l="en">What we do</span></h2>
+<p class="sub rv"><span data-l="mr">पहिल्या मेनू चर्चेपासून शेवटचा पाहुणा जाईपर्यंत, एकच टीम सगळं सांभाळते.</span><span data-l="en">One team for the whole event, from the first menu discussion to the last guest leaving.</span></p>
+<div class="grid">
+<div class="card rv"><h3><span data-l="mr">फूड डिस्प्ले</span><span data-l="en">Food display</span></h3><p><span data-l="mr">प्रत्येक पदार्थ चवीसारखाच सुंदर दिसेल असे बफे आणि काउंटर सेटअप.</span><span data-l="en">Buffet and counter setups that make every dish look as good as it tastes.</span></p></div>
+<div class="card rv"><h3><span data-l="mr">लाईव्ह स्टेशन</span><span data-l="en">Live stations</span></h3><p><span data-l="mr">चाट, बार्बेक्यू, पास्ता, डोसा आणि बरेच काही, पाहुण्यांसमोर ताजे.</span><span data-l="en">Chaat, barbecue, pasta, dosa and more, cooked fresh before your guests.</span></p></div>
+<div class="card rv"><h3><span data-l="mr">इव्हेंट मॅनेजमेंट</span><span data-l="en">Event management</span></h3><p><span data-l="mr">स्टाफ, टेबल मांडणी, भांडी आणि प्रत्येक कार्यक्रमात ऑन-साईट समन्वयक.</span><span data-l="en">Staff, table layout, crockery and an on-site coordinator at every function.</span></p></div>
+<div class="card rv"><h3><span data-l="mr">सजावट आणि सेटअप</span><span data-l="en">Décor and setup</span></h3><p><span data-l="mr">स्टेज, प्रवेशद्वार आणि थीम सजावट, मेनू व जागेनुसार.</span><span data-l="en">Stage, entrance and theme décor planned with your menu and venue.</span></p></div>
+</div></div></section>
+
+<section id="show"><div class="wrap show">
+<img class="rv" src="images/counter.jpg" alt="Salad counter display by Tuljai Display and Management" loading="lazy">
+<div class="rv"><h2><span data-l="mr">आमचे डिस्प्ले</span><span data-l="en">Our displays</span></h2>
+<p class="sub" style="margin-bottom:0"><span data-l="mr">प्रकाश, सोनेरी नक्षी आणि फुलांची सजावट, तुमच्या पाहुण्यांच्या नजरेत भरेल असा प्रत्येक काउंटर.</span><span data-l="en">Warm lighting, gold detailing and fresh flowers. Every counter is made to catch your guests' eye.</span></p></div>
+</div></section>
+
+<section id="specialities" class="dk"><div class="wrap"><h2 class="rv"><span data-l="mr">आमची खासियत</span><span data-l="en">Our specialities</span></h2><p class="sub rv"><span data-l="mr">प्रत्येक मेनू तुमच्या आवडीनुसार.</span><span data-l="en">Every menu is customised to your taste.</span></p></div><div class="car"><div class="ct"><div class="tile"><span data-l="mr">महाराष्ट्रीयन थाळी</span><span data-l="en">Maharashtrian thali</span></div><div class="tile"><span data-l="mr">उत्तर भारतीय</span><span data-l="en">North Indian</span></div><div class="tile"><span data-l="mr">दक्षिण भारतीय</span><span data-l="en">South Indian</span></div><div class="tile"><span data-l="mr">चायनीज</span><span data-l="en">Chinese</span></div><div class="tile"><span data-l="mr">चाट काउंटर</span><span data-l="en">Chaat counter</span></div><div class="tile"><span data-l="mr">लाईव्ह बार्बेक्यू</span><span data-l="en">Live barbecue</span></div><div class="tile"><span data-l="mr">सॅलड काउंटर</span><span data-l="en">Salad counter</span></div><div class="tile"><span data-l="mr">पास्ता</span><span data-l="en">Pasta station</span></div><div class="tile"><span data-l="mr">पिझ्झा</span><span data-l="en">Live pizza</span></div><div class="tile"><span data-l="mr">मिठाई</span><span data-l="en">Desserts</span></div><div class="tile"><span data-l="mr">कॉकटेल मेनू</span><span data-l="en">Cocktail menu</span></div></div></div></section>
+
+<section id="videos" class="dk"><div class="vban" id="vban" data-v="videos/video-1.mp4"><div class="vov"></div><div class="vin"><h2><span data-l="mr">आमचे काम पहा</span><span data-l="en">Watch our work</span></h2><p class="sub"><span data-l="mr">व्हिडिओ पाहण्यासाठी प्ले बटण दाबा.</span><span data-l="en">Press play to watch our displays and events.</span></p><button class="rp" id="vbtn" aria-label="Play video"><i></i></button></div></div>
+<div class="wrap"><div class="vrow">
+<button class="vc rv" data-v="videos/video-1.mp4" aria-label="Play video"><img src="images/poster-1.jpg" alt="" loading="lazy"><span class="rp s"><i></i></span><p><span data-l="mr">आमचा व्हिडिओ 1</span><span data-l="en">Our video 1</span></p></button>
+<button class="vc rv" data-v="videos/video-2.mp4" aria-label="Play video"><img src="images/poster-2.jpg" alt="" loading="lazy"><span class="rp s"><i></i></span><p><span data-l="mr">आमचा व्हिडिओ 2</span><span data-l="en">Our video 2</span></p></button>
+<button class="vc rv" data-v="videos/video-3.mp4" aria-label="Play video"><img src="images/poster-3.jpg" alt="" loading="lazy"><span class="rp s"><i></i></span><p><span data-l="mr">आमचा व्हिडिओ 3</span><span data-l="en">Our video 3</span></p></button>
+</div>
+<p style="text-align:center;margin:10px 0 0"><a class="btn" href="https://www.instagram.com/tuljai_display_and_management" target="_blank" rel="noopener"><span data-l="mr">Instagram वर आणखी पहा</span><span data-l="en">More on Instagram</span></a></p></div></section>
+
+<section id="process"><div class="wrap">
+<h2 class="rv"><span data-l="mr">ऑर्डर कशी द्यायची</span><span data-l="en">How to order</span></h2>
+<p class="sub rv"><span data-l="mr">चार सोप्या पायऱ्या.</span><span data-l="en">Four simple steps.</span></p>
+<div class="steps">
+<div class="step rv"><b><span data-l="mr">WhatsApp वर माहिती पाठवा</span><span data-l="en">Send details on WhatsApp</span></b><span data-l="mr">खालील फॉर्म भरा.</span><span data-l="en">Fill the form below.</span></div>
+<div class="step rv"><b><span data-l="mr">मेनू आणि दर</span><span data-l="en">Menu and quote</span></b><span data-l="mr">आम्ही तुमच्या बजेटनुसार मेनू ठरवतो.</span><span data-l="en">We plan the menu to your budget.</span></div>
+<div class="step rv"><b><span data-l="mr">सेटअप</span><span data-l="en">Setup</span></b><span data-l="mr">कार्यक्रमाआधी सर्व तयारी.</span><span data-l="en">Everything ready before the event.</span></div>
+<div class="step rv"><b><span data-l="mr">कार्यक्रम</span><span data-l="en">Your event</span></b><span data-l="mr">तुम्ही फक्त आनंद घ्या.</span><span data-l="en">You just enjoy.</span></div>
+</div></div></section>
+
+<section id="why" class="band"><div class="wrap">
+<h2 class="rv"><span data-l="mr">तुळजाई का?</span><span data-l="en">Why Tuljai</span></h2>
+<div class="tabs"><button class="tb on" data-t="0"><span data-l="mr">आमची कहाणी</span><span data-l="en">Our story</span></button><button class="tb" data-t="1"><span data-l="mr">आम्हीच का</span><span data-l="en">Why us</span></button><button class="tb" data-t="2"><span data-l="mr">गुणवत्ता</span><span data-l="en">Quality</span></button></div>
+<div class="tp on"><p><span data-l="mr">तुळजाई डिस्प्ले ऍण्ड मॅनेजमेंट हिंगणगाव, धामणगाव रेल्वे (अमरावती) येथून लग्न, समारंभ आणि प्रत्येक कार्यक्रमासाठी फूड डिस्प्ले, लाईव्ह काउंटर, सजावट आणि मॅनेजमेंट सेवा देते. तुमचा कार्यक्रम आम्ही आमचाच समजून सांभाळतो.</span><span data-l="en">Tuljai Display and Management serves weddings, functions and every celebration from Hingangaon, Dhamangaon Rly (Amravati) with food displays, live counters, décor and event management. We treat your event as our own.</span></p></div>
+<div class="tp"><ul class="tick"><li><span data-l="mr">प्रत्येक बजेटनुसार मेनू</span><span data-l="en">Menus for every budget</span></li><li><span data-l="mr">लहान-मोठ्या कार्यक्रमांसाठी प्रशिक्षित स्टाफ</span><span data-l="en">Trained staff for small and large events</span></li><li><span data-l="mr">प्रत्येक कार्यक्रमात ऑन-साईट समन्वयक</span><span data-l="en">On-site coordinator at every event</span></li><li><span data-l="mr">स्पष्ट आणि योग्य दर</span><span data-l="en">Clear, fair pricing</span></li><li><span data-l="mr">लग्न, साखरपुडा, समारंभ, पार्टी</span><span data-l="en">Weddings, engagements, functions, parties</span></li><li><span data-l="mr">थेट मालकांशी संपर्क</span><span data-l="en">Direct contact with the owner</span></li></ul></div>
+<div class="tp"><ul class="tick"><li><span data-l="mr">ताजे साहित्य</span><span data-l="en">Fresh ingredients</span></li><li><span data-l="mr">स्वच्छ स्वयंपाकघर</span><span data-l="en">Clean kitchen</span></li><li><span data-l="mr">आकर्षक डिस्प्ले आणि सेटअप</span><span data-l="en">Attractive display and setup</span></li><li><span data-l="mr">वेळेवर सेवा</span><span data-l="en">Service on time</span></li></ul></div>
+</div></section>
+
+<section id="faq"><div class="wrap" style="max-width:760px">
+<h2 class="rv"><span data-l="mr">नेहमी विचारले जाणारे प्रश्न</span><span data-l="en">Common questions</span></h2>
+<details class="rv"><summary><span data-l="mr">ऑर्डर किती आधी द्यावी?</span><span data-l="en">How early should I book?</span></summary><p><span data-l="mr">शक्यतो १५ ते ३० दिवस आधी कळवा, म्हणजे तारीख निश्चित करता येईल.</span><span data-l="en">Ideally 15 to 30 days ahead, so we can reserve your date.</span></p></details>
+<details class="rv"><summary><span data-l="mr">मेनू बदलता येतो का?</span><span data-l="en">Can the menu be changed?</span></summary><p><span data-l="mr">हो, मेनू तुमच्या आवडीनुसार ठरवला जातो.</span><span data-l="en">Yes, every menu is customised to your choice.</span></p></details>
+<details class="rv"><summary><span data-l="mr">अमरावती बाहेरही सेवा मिळते का?</span><span data-l="en">Do you serve outside Amravati?</span></summary><p><span data-l="mr">ठिकाण WhatsApp वर कळवा, आम्ही उपलब्धता सांगतो.</span><span data-l="en">Send your venue on WhatsApp and we will confirm availability.</span></p></details>
+</div></section>
+
+<section id="cta"><div class="wrap"><h2><span data-l="mr">तुम्ही कशाची वाट पाहताय?</span><span data-l="en">What are you waiting for?</span></h2><p class="sub"><span data-l="mr">आजच तुमच्या कार्यक्रमाची तारीख आमच्याकडे नोंदवा.</span><span data-l="en">Book your event date with us today.</span></p><a class="btn wa" href="#contact"><span data-l="mr">WhatsApp वर ऑर्डर</span><span data-l="en">Order on WhatsApp</span></a> <a class="btn" href="tel:+919503460250"><span data-l="mr">कॉल करा</span><span data-l="en">Call now</span></a></div></section>
+
+<section id="contact" class="band"><div class="wrap contact">
+<div><h2><span data-l="mr">ऑर्डर द्या</span><span data-l="en">Book your event</span></h2>
+<p class="sub"><span data-l="mr">माहिती भरा, पूर्ण ऑर्डर थेट आमच्या WhatsApp वर तयार होऊन उघडेल.</span><span data-l="en">Fill in the details. Your full order opens in WhatsApp, ready to send.</span></p>
+<form id="f">
+<div><label for="n"><span data-l="mr">तुमचे नाव</span><span data-l="en">Your name</span></label><input id="n" type="text" required autocomplete="name"></div>
+<div><label for="p"><span data-l="mr">मोबाईल नंबर</span><span data-l="en">Mobile number</span></label><input id="p" type="tel" inputmode="tel" autocomplete="tel"></div>
+<div><label for="o"><span data-l="mr">कार्यक्रम</span><span data-l="en">Occasion</span></label><select id="o"><option data-mr="लग्न" data-en="Wedding"></option><option data-mr="साखरपुडा" data-en="Engagement"></option><option data-mr="प्री-वेडिंग" data-en="Pre-wedding"></option><option data-mr="कॉर्पोरेट कार्यक्रम" data-en="Corporate event"></option><option data-mr="वाढदिवस / पार्टी" data-en="Birthday or party"></option><option data-mr="इतर" data-en="Other"></option></select></div>
+<div><label for="d"><span data-l="mr">तारीख</span><span data-l="en">Event date</span></label><input id="d" type="date"></div>
+<div><label for="v"><span data-l="mr">ठिकाण</span><span data-l="en">Venue</span></label><input id="v" type="text"></div>
+<div><label for="g"><span data-l="mr">पाहुण्यांची संख्या</span><span data-l="en">Number of guests</span></label><input id="g" type="number" min="1" inputmode="numeric"></div>
+<fieldset><legend><span data-l="mr">हव्या असलेल्या सेवा</span><span data-l="en">Services needed</span></legend>
+<label><input type="checkbox" name="s" value="Food display"> <span data-l="mr">फूड डिस्प्ले</span><span data-l="en">Food display</span></label>
+<label><input type="checkbox" name="s" value="Live stations"> <span data-l="mr">लाईव्ह स्टेशन</span><span data-l="en">Live stations</span></label>
+<label><input type="checkbox" name="s" value="Event management"> <span data-l="mr">इव्हेंट मॅनेजमेंट</span><span data-l="en">Event management</span></label>
+<label><input type="checkbox" name="s" value="Decor"> <span data-l="mr">सजावट</span><span data-l="en">Décor</span></label></fieldset>
+<div><label for="m"><span data-l="mr">मेनू किंवा इतर माहिती</span><span data-l="en">Menu or other details</span></label><textarea id="m" rows="3"></textarea></div>
+<button class="btn wa" type="submit"><span data-l="mr">WhatsApp वर ऑर्डर पाठवा</span><span data-l="en">Send order on WhatsApp</span></button>
+</form></div>
+<div class="info"><h2><span data-l="mr">संपर्क</span><span data-l="en">Contact</span></h2>
+<p><b><span data-l="mr">तुळजाई डिस्प्ले ऍण्ड मॅनेजमेंट</span><span data-l="en">Tuljai Display and Management</span></b><br><span data-l="mr">मालक: रोशन गिरी</span><span data-l="en">Owner: Roshan Giri</span></p>
+<p><span data-l="mr">मु. हिंगणगाव, ता. धामणगाव रेल्वे,<br>अमरावती, महाराष्ट्र</span><span data-l="en">At Hingangaon, Tq. Dhamangaon Rly,<br>Amravati, Maharashtra</span></p>
+<p>Phone / WhatsApp:<br><a href="tel:+919503460250">+91 95034 60250</a></p>
+<p>Instagram:<br><a href="https://www.instagram.com/tuljai_display_and_management" target="_blank" rel="noopener">@tuljai_display_and_management</a></p>
+<a class="btn" style="margin-top:6px" href="https://www.google.com/maps/search/?api=1&query=Hingangaon+Dhamangaon+Railway+Amravati" target="_blank" rel="noopener"><span data-l="mr">Google Maps वर पहा</span><span data-l="en">View on Google Maps</span></a>
+</div></div></section>
+
+<section class="own2" id="owner"><div class="wrap">
+<div class="pf rv"><img src="images/owner.jpg" alt="Roshan Giri, owner of Tuljai Display and Management" loading="lazy"></div>
+<div class="rv"><h2><span data-l="mr">मालकांना भेटा</span><span data-l="en">Meet the owner</span></h2>
+<p class="nm"><span data-l="mr">रोशन गिरी</span><span data-l="en">Roshan Giri</span></p>
+<p class="rl"><span data-l="mr">संस्थापक आणि मालक, तुळजाई डिस्प्ले ऍण्ड मॅनेजमेंट</span><span data-l="en">Founder and Owner, Tuljai Display and Management</span></p>
+<p><span data-l="mr">तुमच्या कार्यक्रमाबद्दल थेट मालकांशी बोला.</span><span data-l="en">Talk to the owner directly about your event.</span></p>
+<p><span data-l="mr">हिंगणगाव, धामणगाव रेल्वे, अमरावती</span><span data-l="en">Hingangaon, Dhamangaon Rly, Amravati</span><br><a href="tel:+919503460250">+91 95034 60250</a></p>
+<a class="btn wa" href="https://wa.me/919503460250?text=Hello%20Roshan%20ji" target="_blank" rel="noopener">WhatsApp</a>
+<a class="btn" href="tel:+919503460250"><span data-l="mr">कॉल करा</span><span data-l="en">Call</span></a>
+<a class="btn alt" href="https://www.instagram.com/tuljai_display_and_management" target="_blank" rel="noopener">Instagram</a>
+</div></div></section>
+</main>
+
+<footer><div class="wrap fg"><div><img src="images/logo.jpg" alt="Tuljai logo"><p><span data-l="mr">लग्न, समारंभ आणि प्रत्येक आनंदाच्या क्षणासाठी फूड डिस्प्ले आणि इव्हेंट मॅनेजमेंट.</span><span data-l="en">Food display and event management for weddings, functions and every celebration.</span></p></div>
+<div><h4><span data-l="mr">महत्त्वाचे दुवे</span><span data-l="en">Quick links</span></h4><p><a href="#top"><span data-l="mr">मुख्यपृष्ठ</span><span data-l="en">Home</span></a><br><a href="#services"><span data-l="mr">सेवा</span><span data-l="en">Services</span></a><br><a href="#specialities"><span data-l="mr">खासियत</span><span data-l="en">Specialities</span></a><br><a href="#videos"><span data-l="mr">व्हिडिओ</span><span data-l="en">Videos</span></a><br><a href="#contact"><span data-l="mr">संपर्क</span><span data-l="en">Contact</span></a></p></div>
+<div><h4><span data-l="mr">संपर्क</span><span data-l="en">Contact</span></h4><p><span data-l="mr">मु. हिंगणगाव, ता. धामणगाव रेल्वे, अमरावती</span><span data-l="en">At Hingangaon, Tq. Dhamangaon Rly, Amravati</span><br><a href="tel:+919503460250">+91 95034 60250</a><br><a href="https://www.instagram.com/tuljai_display_and_management" target="_blank" rel="noopener">Instagram</a></p></div></div>
+<p class="cp">© 2026 Tuljai Display and Management</p></footer>
+<div id="lb"><button id="lbx" aria-label="Close">✕</button><video id="lbv" controls playsinline></video></div>
+<div class="fab"><a href="https://wa.me/919503460250?text=Hello%20Tuljai%20Display%20and%20Management" target="_blank" rel="noopener">WhatsApp</a><a href="tel:+919503460250"><span data-l="mr">कॉल करा</span><span data-l="en">Call</span></a></div>
+
+<script>
+var R=document.documentElement,L='mr';
+function setL(l){L=l;R.lang=l;[].forEach.call(document.querySelectorAll('option[data-mr]'),function(o){o.textContent=o.getAttribute('data-'+l)});try{localStorage.setItem('tl',l)}catch(e){}}
+try{setL(localStorage.getItem('tl')||'mr')}catch(e){setL('mr')}
+[].forEach.call(document.querySelectorAll('[data-pick]'),function(b){b.addEventListener('click',function(){setL(b.getAttribute('data-pick'))})});
+var sp=document.getElementById('sp');for(var i=0;i<26;i++){var e=document.createElement('i');e.style.left=Math.random()*100+'%';e.style.animationDuration=(6+Math.random()*9)+'s';e.style.animationDelay=(-Math.random()*12)+'s';e.style.transform='scale('+(.5+Math.random())+')';sp.appendChild(e)}
+addEventListener('scroll',function(){var h=R.scrollHeight-innerHeight;document.getElementById('bar').style.width=(h>0?scrollY/h*100:0)+'%'},{passive:true});
+function cnt(el){var t=+el.getAttribute('data-n'),k=0,st=setInterval(function(){k+=Math.max(1,Math.ceil(t/50));if(k>=t){k=t;clearInterval(st)}el.textContent=k+(t>=100&&t!==100?'+':t===25?'+':'')},30)}
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');var c=x.target.querySelector('[data-n]');if(c&&!c.done){c.done=1;cnt(c)}io.unobserve(x.target)}})},{threshold:.15});
+[].forEach.call(document.querySelectorAll('.rv'),function(e,i){e.style.transitionDelay=(i%4)*90+'ms';io.observe(e)});
+[].forEach.call(document.querySelectorAll('.card'),function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(700px) rotateY('+x*10+'deg) rotateX('+-y*10+'deg) translateY(-4px)'});c.addEventListener('mouseleave',function(){c.style.transform=''})});
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();
+var s=[].map.call(document.querySelectorAll('input[name=s]:checked'),function(x){return x.value}).join(', ')||'-';
+var oc=o.options[o.selectedIndex].getAttribute('data-en');
+var t='New order enquiry - Tuljai Display and Management\n\nName: '+n.value+'\nMobile: '+(p.value||'-')+'\nOccasion: '+oc+'\nDate: '+(d.value||'-')+'\nVenue: '+(v.value||'-')+'\nGuests: '+(g.value||'-')+'\nServices: '+s+'\nDetails: '+(m.value||'-');
+window.open('https://wa.me/919503460250?text='+encodeURIComponent(t),'_blank','noopener');});
+
+var SP=document.getElementById('splash'),op=0;document.body.classList.add('lock');
+function openS(){if(op)return;op=1;SP.classList.add('open');R.classList.add('go');setTimeout(function(){SP.classList.add('done');document.body.classList.remove('lock')},1400)}
+setTimeout(openS,2700);for(var q=0;q<28;q++){var k=document.createElement("i");k.className="sk";k.style.left=Math.random()*100+"%";k.style.animationDuration=(3+Math.random()*4)+"s";k.style.animationDelay=(-Math.random()*5)+"s";SP.appendChild(k)}SP.addEventListener('click',openS);
+[].forEach.call(document.querySelectorAll('.brand .w'),function(w){var t=w.textContent,a=(window.Intl&&Intl.Segmenter)?Array.from(new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(t),function(x){return x.segment}):[t];w.setAttribute('aria-label',t);w.innerHTML=a.map(function(c,i){return '<span class="ch" aria-hidden="true" style="--i:'+i+'">'+c+'</span>'}).join('')});
+[].forEach.call(document.querySelectorAll('h2:not(.rv)'),function(h){h.classList.add('rv');io.observe(h)});
+var hw=document.querySelector('.hero .wrap');addEventListener('scroll',function(){if(scrollY<innerHeight){hw.style.transform='translateY('+scrollY*.22+'px)';hw.style.opacity=Math.max(0,1-scrollY/(innerHeight*.9))}},{passive:true});
+var pf=document.querySelector('.pf');pf.addEventListener('mousemove',function(e){var r=pf.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;pf.style.transform='perspective(800px) rotateY('+x*12+'deg) rotateX('+-y*12+'deg)'});pf.addEventListener('mouseleave',function(){pf.style.transform=''});
+if(matchMedia('(hover:hover)').matches){var cg=document.getElementById('cg');addEventListener('mousemove',function(e){cg.style.transform='translate('+(e.clientX-200)+'px,'+(e.clientY-200)+'px)';cg.style.opacity=1});
+[].forEach.call(document.querySelectorAll('.btn'),function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.setProperty('--mx',(e.clientX-r.left-r.width/2)*.22+'px');b.style.setProperty('--my',(e.clientY-r.top-r.height/2)*.32+'px')});b.addEventListener('mouseleave',function(){b.style.setProperty('--mx','0px');b.style.setProperty('--my','0px')})})}
+
+
+
+var hero=document.querySelector('.hero'),tsl=[].slice.call(document.querySelectorAll('.tsl>div')),dts=[].slice.call(document.querySelectorAll('.dots i')),hi=0;
+var b2=document.querySelector('.bg2'),cimg=document.querySelector('.show img');if(b2&&cimg)b2.style.background='url('+cimg.src+') center/cover';
+setInterval(function(){tsl[hi].classList.remove('on');dts[hi].classList.remove('on');hi=(hi+1)%tsl.length;tsl[hi].classList.add('on');dts[hi].classList.add('on');hero.classList.toggle('s1',hi%2==1)},5500);
+var ct=document.querySelector('.ct');ct.innerHTML+=ct.innerHTML;
+var vb=document.getElementById('vban');if(cimg)vb.style.backgroundImage='url('+cimg.src+')';
+var lb=document.getElementById('lb'),lv=document.getElementById('lbv');
+function lbOpen(s){lv.src=s;lb.classList.add('on');document.body.classList.add('lock');lv.play&&lv.play().catch(function(){})}
+function lbClose(){lv.pause();lv.removeAttribute('src');lv.load();lb.classList.remove('on');document.body.classList.remove('lock')}
+document.getElementById('vbtn').addEventListener('click',function(){lbOpen(vb.getAttribute('data-v'))});
+[].forEach.call(document.querySelectorAll('.vc'),function(c){c.addEventListener('click',function(){lbOpen(c.getAttribute('data-v'))})});
+document.getElementById('lbx').addEventListener('click',lbClose);lb.addEventListener('click',function(e){if(e.target===lb)lbClose()});addEventListener('keydown',function(e){if(e.key==='Escape')lbClose()});
+[].forEach.call(document.querySelectorAll('.tb'),function(b){b.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('.tb,.tp'),function(x){x.classList.remove('on')});b.classList.add('on');document.querySelectorAll('.tp')[+b.getAttribute('data-t')].classList.add('on')})});
+</script>
+</body>
+</html>
